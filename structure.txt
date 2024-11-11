@@ -1,0 +1,18 @@
+dailyDiary/
+├── diary/
+│   ├── migrations/
+│   ├── templates/main/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── forms.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py           # <- App URL configuration
+│   └── views.py
+├── dailyDiary/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py           # <- Project URL configuration, includes diary.urls
+│   └── wsgi.py
+└── manage.py

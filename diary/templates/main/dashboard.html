@@ -1,0 +1,12 @@
+<h2>Dashboard</h2>
+<ul>
+    {% for entry in entries %}
+    <li>{{ entry.content }} - {{ entry.privacy }}</li>
+    <ul>
+        {% for image in entry.images.all %}
+        <li><img src="{{ image.image.url }}" alt="Diary Image" style="width: 100px; height: auto;"></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_entry' %}">Create New Entry</a>

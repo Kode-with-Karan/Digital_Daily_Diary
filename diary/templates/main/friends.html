@@ -1,0 +1,6 @@
+<h2>Friends</h2>
+<ul>
+    {% for friend in friends %}
+    <li>{{ friend.user_to.username }}</li>
+    {% endfor %}
+</ul>
