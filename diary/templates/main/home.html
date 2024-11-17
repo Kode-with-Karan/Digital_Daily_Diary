@@ -1,4 +1,288 @@
-<!DOCTYPE html>
+
+{% extends 'base/base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+{% block content %}
+<div class="px-40 flex flex-1 justify-center py-5">
+    <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+        <div class="@container">
+            <div class="@[480px]:p-4">
+                <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
+                    style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://cdn.usegalileo.ai/stability/93deb6c1-7e69-4777-b672-b5411c6fc9e8.png");'>
+                    <div class="flex flex-col gap-2 text-left">
+                        <h1
+                            class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                            A daily diary for your life
+                        </h1>
+                        <h2
+                            class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                            Record your feelings, thoughts and experiences every day. Over time, you will
+                            find that the past is a precious treasure.
+                        </h2>
+                    </div>
+                    <div class="flex-wrap gap-3 flex">
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#197ce6] text-slate-50 text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                            <span class="truncate"><a href="{% url 'register' %}">Sign up</a></span>
+                        </button>
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#e7edf3] text-[#0e141b] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                            <span class="truncate"><a href="{% url 'login' %}">Log in</a></span>
+                        </button>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col gap-10 px-4 py-10 @container">
+            <h1
+                class="text-[#0e141b] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
+                All the tools you need to record your life
+            </h1>
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3">
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/stability/8d753489-8b08-4039-a863-35ab85444c5e.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Emotion</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">Record your mood and
+                            emotions every day.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/stability/cbeb2287-1260-4f9d-bebd-95a3df78353f.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Cloud Sync</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">Automatically sync to
+                            the cloud.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/sdxl10/76175965-3522-4232-a3b6-86d16b08759e.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Calendar</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">View your records by
+                            day, month, or year.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/stability/1959717f-4317-4980-8a16-458ed2b5595a.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Map</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">Record your life
+                            journey on the map.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/stability/66140776-c400-44df-be21-ebf30697f3df.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Book</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">Turn your diary into a
+                            beautiful book.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-3 pb-3">
+                    <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+                        style='background-image: url("https://cdn.usegalileo.ai/stability/47b9dd81-4692-49bd-820e-9ec83ade245c.png");'>
+                    </div>
+                    <div>
+                        <p class="text-[#0e141b] text-base font-medium leading-normal">Camera</p>
+                        <p class="text-[#4e7297] text-sm font-normal leading-normal">Take photos and videos
+                            to record your life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
+                <div class="@container">
+                    <div class="flex flex-col gap-6 px-4 py-10 @[480px]:gap-8 @[864px]:flex-row">
+                        <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl @[480px]:h-auto @[480px]:min-w-[400px] @[864px]:w-full"
+                            style='background-image: url("https://cdn.usegalileo.ai/stability/04ae3da2-df21-4280-9388-f4d730d2739b.png");'>
+                        </div>
+                        <div
+                            class="flex flex-col gap-6 @[480px]:min-w-[400px] @[480px]:gap-8 @[864px]:justify-center">
+                            <div class="flex flex-col gap-2 text-left">
+                                <h1
+                                    class="text-[#1C160C] text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                                    Capture Your Daily Moments
+                                </h1>
+                                <h2
+                                    class="text-[#1C160C] text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                                    Join a community that values privacy and connection. Keep your memories safe
+                                    and share them with friends.
+                                </h2>
+                            </div>
+                            <div class="flex-wrap gap-3 flex">
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#019863] text-[#FFFFFF] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                                    <span class="truncate"><a href="{% url 'register' %}">Sign up</a></span>
+                                </button>
+                                <button
+                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#F4EFE6] text-[#1C160C] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+                                    <span class="truncate"><a href="{% url 'home' %}">Learn More</a></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-10 px-4 py-10 @container">
+                    <div class="flex flex-col gap-4">
+                        <h1
+                            class="text-[#1C160C] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
+                            Features
+                        </h1>
+                        <p class="text-[#1C160C] text-base font-normal leading-normal max-w-[720px]">Discover
+                            what makes us different.</p>
+                    </div>
+                    <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-0">
+                        <div
+                            class="flex flex-1 gap-3 rounded-lg border border-[#E9DFCE] bg-[#FFFFFF] p-4 flex-col">
+                            <div class="text-[#1C160C]" data-icon="X" data-size="24px" data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                    fill="currentColor" viewBox="0 0 256 256">
+                                    <path
+                                        d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <h2 class="text-[#1C160C] text-base font-bold leading-tight">Privacy Settings
+                                </h2>
+                                <p class="text-[#A18249] text-sm font-normal leading-normal">Take control of
+                                    your privacy with customizable settings that keep your content secure.</p>
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-1 gap-3 rounded-lg border border-[#E9DFCE] bg-[#FFFFFF] p-4 flex-col">
+                            <div class="text-[#1C160C]" data-icon="Users" data-size="24px"
+                                data-weight="regular">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                    fill="currentColor" viewBox="0 0 256 256">
+                                    <path
+                                        d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <h2 class="text-[#1C160C] text-base font-bold leading-tight">Friend System</h2>
+                                <p class="text-[#A18249] text-sm font-normal leading-normal">Connect with
+                                    friends and share your favorite moments with ease.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+
+
+        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+            <div class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col">
+                <div class="text-[#0e141b]" data-icon="Check" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                            d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-[#0e141b] text-base font-bold leading-tight">Simple and easy to use</h2>
+                    <p class="text-[#4e7297] text-sm font-normal leading-normal">Just write down your
+                        thoughts and emotions every day. No ads, no distractions.</p>
+                </div>
+            </div>
+            <div class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col">
+                <div class="text-[#0e141b]" data-icon="Check" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                            d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-[#0e141b] text-base font-bold leading-tight">Safe and private</h2>
+                    <p class="text-[#4e7297] text-sm font-normal leading-normal">
+                        We use end-to-end encryption to protect your privacy, and you can also set a
+                        password for your diary.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col">
+                <div class="text-[#0e141b]" data-icon="Check" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                            d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-[#0e141b] text-base font-bold leading-tight">Customize your diary</h2>
+                    <p class="text-[#4e7297] text-sm font-normal leading-normal">You can add photos, videos,
+                        music, weather, location, and other elements to your diary.</p>
+                </div>
+            </div>
+            <div class="flex flex-1 gap-3 rounded-lg border border-[#d0dbe7] bg-slate-50 p-4 flex-col">
+                <div class="text-[#0e141b]" data-icon="Check" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                        viewBox="0 0 256 256">
+                        <path
+                            d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h2 class="text-[#0e141b] text-base font-bold leading-tight">Read and write anywhere
+                    </h2>
+                    <p class="text-[#4e7297] text-sm font-normal leading-normal">You can access your diary
+                        from any device, and we also provide mobile apps for iOS and Android.</p>
+                </div>
+            </div>
+        </div>
+        <div class="@container">
+            <div
+                class="flex flex-col justify-end gap-6 px-4 py-10 @[480px]:gap-8 @[480px]:px-10 @[480px]:py-20">
+                <div class="flex flex-col gap-2 text-center">
+                    <h1
+                        class="text-[#1C160C] tracking-light text-[32px] font-bold leading-tight @[480px]:text-4xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] max-w-[720px]">
+                        Ready to start your journey?
+                    </h1>
+                    <p class="text-[#1C160C] text-base font-normal leading-normal max-w-[720px">Sign up
+                        today and start creating lasting memories.</p>
+                </div>
+                <div class="flex flex-1 justify-center">
+                    <div class="flex justify-center">
+                        <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#019863] text-[#FFFFFF] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] grow">
+                            <span class="truncate">Get Started</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Home</title>
@@ -8,4 +292,4 @@
     <a href="{% url 'login' %}">Log In</a> | 
     <a href="{% url 'register' %}">Sign Up</a>
 </body>
-</html>
+</html> -->
