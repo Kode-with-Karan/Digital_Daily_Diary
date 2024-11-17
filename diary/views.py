@@ -43,6 +43,10 @@ def password_reset(request):
     
     return render(request, 'main/password_reset.html')
 
+def diary(request):
+    entries = DiaryEntry.objects.filter(user=request.user)
+    return render(request, 'main/diary.html', {'entries': entries})
+
 def dashboard(request):
     entries = DiaryEntry.objects.filter(user=request.user)
     return render(request, 'main/dashboard.html', {'entries': entries})

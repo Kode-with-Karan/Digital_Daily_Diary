@@ -1,0 +1,26 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Site{% endblock %}</title>
+    {% block links %}{% endblock %}
+    {% include './header.html' %}
+</head>
+<body>
+    <!-- Include the navbar -->
+    {% include './navbar.html' %}
+
+    <!-- Main content block -->
+
+    {% block content %}{% endblock %}
+
+
+    <!-- Include the footer -->
+    {% include './footer.html' %}
+
+    <!-- Include JavaScript files here -->
+    {% include './js.html' %}
+</body>
+</html>
