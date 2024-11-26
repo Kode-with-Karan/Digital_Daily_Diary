@@ -10,6 +10,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('create-entry/', views.create_entry, name='create_entry'),
     path('friends/', views.friends, name='friends'),
+    path('friends/follow/', views.friends_follow, name='friends_follow'),
+    path('friends/unfollow/', views.friends_unfollow, name='friends_unfollow'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('profile-settings/', views.profile_settings, name='profile_settings'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),

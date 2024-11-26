@@ -56,7 +56,8 @@
     </div>
     <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
       <div class="flex flex-wrap justify-between gap-3 p-4"><p class="text-[#1C1D22] text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Today's entry</p></div>
-      <div class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
+      {% for entrie in entries%}
+      <div id="{{entrie.pk}}_page" class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
         <div class="flex items-center gap-4">
           <div class="text-[#1C1D22] flex items-center justify-center rounded-lg bg-[#EEEFF2] shrink-0 size-12" data-icon="Sun" data-size="24px" data-weight="regular">
             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -66,8 +67,8 @@
             </svg>
           </div>
           <div class="flex flex-col justify-center">
-            <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">7:30 AM</p>
-            <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">Morning coffee</p>
+            <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">{{entrie.title}}, by {{entrie.user}}</p>
+            <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">{{entrie.created_at}}</p>
           </div>
         </div>
         <div class="shrink-0">
@@ -79,85 +80,20 @@
         </div>
       </div>
       <p class="text-[#1C1D22] text-base font-normal leading-normal pb-3 pt-1 px-4">
-        I wake up to the sound of birds chirping. I make my way to the kitchen and brew a hot cup of coffee. The aroma fills the room, and I take a moment to savor the
-        silence.
+        {{entrie.content|linebreaksbr }}
       </p>
+      
+      {% for image in entrie.images.all %}
       <div class="flex w-full grow bg-[#F9FAFA] @container p-4">
         <div class="w-full gap-1 overflow-hidden bg-[#F9FAFA] @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
           <div
             class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
-            style='background-image: url("https://cdn.usegalileo.ai/stability/71093d81-fad7-4f4c-85de-dc95b50ad06d.png");'
+            style='background-image: url("{{image.image.url}}");'
           ></div>
         </div>
       </div>
-      <div class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
-        <div class="flex items-center gap-4">
-          <div class="text-[#1C1D22] flex items-center justify-center rounded-lg bg-[#EEEFF2] shrink-0 size-12" data-icon="BowlFood" data-size="24px" data-weight="regular">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-              <path
-                d="M224,104h-8.37a88,88,0,0,0-175.26,0H32a8,8,0,0,0-8,8,104.35,104.35,0,0,0,56,92.28V208a16,16,0,0,0,16,16h64a16,16,0,0,0,16-16v-3.72A104.35,104.35,0,0,0,232,112,8,8,0,0,0,224,104Zm-24.46,0H148.12a71.84,71.84,0,0,1,41.27-29.57A71.45,71.45,0,0,1,199.54,104ZM173.48,56.23q2.75,2.25,5.27,4.75a87.92,87.92,0,0,0-49.15,43H100.1A72.26,72.26,0,0,1,168,56C169.83,56,171.66,56.09,173.48,56.23ZM128,40a71.87,71.87,0,0,1,19,2.57A88.36,88.36,0,0,0,83.33,104H56.46A72.08,72.08,0,0,1,128,40Zm36.66,152A8,8,0,0,0,160,199.3V208H96v-8.7A8,8,0,0,0,91.34,192a88.29,88.29,0,0,1-51-72H215.63A88.29,88.29,0,0,1,164.66,192Z"
-              ></path>
-            </svg>
-          </div>
-          <div class="flex flex-col justify-center">
-            <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">12:00 PM</p>
-            <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">Lunch with friends</p>
-          </div>
-        </div>
-        <div class="shrink-0">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit"
-          >
-            <span class="truncate">Edit</span>
-          </button>
-        </div>
-      </div>
-      <p class="text-[#1C1D22] text-base font-normal leading-normal pb-3 pt-1 px-4">
-        I meet my friends for lunch at a cozy cafe. We catch up on life and share a few laughs. It's a refreshing break from the daily grind, and I'm grateful for their
-        company.
-      </p>
-      <div class="flex w-full grow bg-[#F9FAFA] @container p-4">
-        <div class="w-full gap-1 overflow-hidden bg-[#F9FAFA] @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
-          <div
-            class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
-            style='background-image: url("https://cdn.usegalileo.ai/sdxl10/c182d3a3-b1dd-4349-b819-d8e650c090f7.png");'
-          ></div>
-        </div>
-      </div>
-      <div class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
-        <div class="flex items-center gap-4">
-          <div class="text-[#1C1D22] flex items-center justify-center rounded-lg bg-[#EEEFF2] shrink-0 size-12" data-icon="DropHalf" data-size="24px" data-weight="regular">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-              <path
-                d="M174,47.75a254.19,254.19,0,0,0-41.45-38.3,8,8,0,0,0-9.18,0A254.19,254.19,0,0,0,82,47.75C54.51,79.32,40,112.6,40,144a88,88,0,0,0,176,0C216,112.6,201.49,79.32,174,47.75ZM200,144a70.57,70.57,0,0,1-.46,8H136V136h63.64Q200,140,200,144ZM183.39,88H136V72h36.89A175.85,175.85,0,0,1,183.39,88ZM136,200h37.19A71.67,71.67,0,0,1,136,215.54Zm0-16V168h59.87a72,72,0,0,1-8,16Zm0-64V104h55.39a116.84,116.84,0,0,1,5.45,16Zm23.89-64H136V32.6A257.22,257.22,0,0,1,159.89,56ZM56,144c0-50,42.26-92.71,64-111.4V215.54A72.08,72.08,0,0,1,56,144Z"
-              ></path>
-            </svg>
-          </div>
-          <div class="flex flex-col justify-center">
-            <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">6:00 PM</p>
-            <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">Evening stroll</p>
-          </div>
-        </div>
-        <div class="shrink-0">
-          <button
-            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit"
-          >
-            <span class="truncate">Edit</span>
-          </button>
-        </div>
-      </div>
-      <p class="text-[#1C1D22] text-base font-normal leading-normal pb-3 pt-1 px-4">
-        I take a leisurely walk around the neighborhood. The sun is setting, casting a warm glow on the trees. It's a peaceful end to the day, and I feel rejuvenated by the
-        simple beauty of nature.
-      </p>
-      <div class="flex w-full grow bg-[#F9FAFA] @container p-4">
-        <div class="w-full gap-1 overflow-hidden bg-[#F9FAFA] @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
-          <div
-            class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
-            style='background-image: url("https://cdn.usegalileo.ai/sdxl10/f35d9ef4-a2ef-42cc-942a-59ebe23d1744.png");'
-          ></div>
-        </div>
-      </div>
+      {% endfor %}
+      {% endfor %}
       <div class="flex justify-stretch">
         <button
           class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-[#EEEFF2] text-[#1C1D22] text-base font-bold leading-normal tracking-[0.015em]"
@@ -167,5 +103,7 @@
       </div>
     </div>
   </div>
+
+
 
 {% endblock %}

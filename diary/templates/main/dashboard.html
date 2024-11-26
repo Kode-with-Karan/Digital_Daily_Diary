@@ -60,14 +60,14 @@
     </div>
     <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
       <div class="flex flex-wrap justify-between gap-3 p-4">
-        <p class="text-[#1C1D22] text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Today, by 8:30 PM</p>
+        <p class="text-[#1C1D22] text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Today, by <span id="clock"></span></p>
       </div>
       <div class="flex items-center px-4 py-3 gap-3 @container">
         <div
           class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0"
           style='background-image: url("https://cdn.usegalileo.ai/stability/cfd2f8ee-2076-4c11-b95b-ab3e3f53262a.png");'
         ></div>
-        <label class="flex flex-col min-w-40 h-12 flex-1">
+        <!-- <label class="flex flex-col min-w-40 h-12 flex-1">
           <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
             <input
               placeholder="What's on your mind?"
@@ -77,28 +77,42 @@
             <div class="flex border-none bg-[#EEEFF2] items-center justify-center pr-4 rounded-r-xl border-l-0 !pr-2">
               <div class="flex items-center gap-4 justify-end">
                 <div class="flex items-center gap-1"></div>
-                <button
-                  class="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#607AFB] text-[#F9FAFA] text-sm font-medium leading-normal hidden @[480px]:block"
-                >
-                  <span class="truncate">Save</span>
-                </button>
+
               </div>
             </div>
           </div>
-        </label>
+        </label> -->
+        <button
+        class="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#607AFB] text-[#F9FAFA] text-sm font-medium leading-normal hidden @[480px]:block"
+      >
+        <span class="truncate"><a href="{% url 'create_entry' %}">Create Page</a></span>
+      </button>
       </div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+        {% for entrie in entries%}
+        <a href="/diary#{{entrie.pk}}_page">
         <div class="flex flex-col gap-3 pb-3">
+          {% if entrie.images.all%}
+          {% for image in entrie.images.all %}
           <div
             class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-            style='background-image: url("https://cdn.usegalileo.ai/stability/d267a105-f6b0-49c7-885a-65719dc5959e.png");'
+            style='background-image: url("{{image.image.url}}");'
           ></div>
+          {% endfor %}
+          {% else %}
+          <div
+          class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
+          style='background-image: url({% static "img/default.png" %});'
+        ></div>
+          {% endif %}
           <div>
-            <p class="text-[#1C1D22] text-base font-medium leading-normal">Lunch at home</p>
-            <p class="text-[#3C3F4A] text-sm font-normal leading-normal">12:30 PM</p>
+            <p class="text-[#1C1D22] text-base font-medium leading-normal">{{entrie.title}}</p>
+            <p class="text-[#3C3F4A] text-sm font-normal leading-normal">{{entrie.created_at}}</p>
           </div>
         </div>
-        <div class="flex flex-col gap-3 pb-3">
+      </a>
+        {% endfor %}
+        <!-- <div class="flex flex-col gap-3 pb-3">
           <div
             class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
             style='background-image: url("https://cdn.usegalileo.ai/stability/68bd29e6-7be0-4316-921b-4881663a077a.png");'
@@ -127,10 +141,46 @@
             <p class="text-[#1C1D22] text-base font-medium leading-normal">Reading</p>
             <p class="text-[#3C3F4A] text-sm font-normal leading-normal">5:00 PM</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
+
+  <script>
+    // Function to update the clock
+    function updateClock() {
+        // Get the current time
+        const now = new Date();
+
+        // Get hours, minutes, and seconds
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+
+        // Determine AM or PM
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+
+        // Convert hours to 12-hour format
+        hours = hours % 12;
+        hours = hours ? hours : 12; // The hour '0' should be '12' (midnight)
+
+        // Format minutes and seconds with leading zeros
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        // Create the time string in 12-hour format
+        const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+
+        // Display the time in the clock div
+        document.getElementById('clock').textContent = timeString;
+    }
+
+    // Call updateClock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+</script>
 {% endblock %}
 
 

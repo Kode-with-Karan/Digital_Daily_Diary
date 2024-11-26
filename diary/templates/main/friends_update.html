@@ -1,0 +1,58 @@
+{% extends './friends.html' %}
+
+{% block friends_extention %}
+
+<div id="Updates" class="layout-content-container flex flex-col max-w-[960px] flex-1">
+    <div class="flex flex-wrap justify-between gap-3 p-4">
+        <p class="text-[#1C1D22] text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">Today's entry
+        </p>
+    </div>
+    {% for entrie in entries%}
+    <div id="{{entrie.pk}}_page"
+        class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
+        <div class="flex items-center gap-4">
+            <div class="text-[#1C1D22] flex items-center justify-center rounded-lg bg-[#EEEFF2] shrink-0 size-12"
+                data-icon="Sun" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor"
+                    viewBox="0 0 256 256">
+                    <path
+                        d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z">
+                    </path>
+                </svg>
+            </div>
+            <div class="flex flex-col justify-center">
+                <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">{{entrie.title}}, by
+                    {{entrie.user}}</p>
+                <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">{{entrie.created_at}}
+                </p>
+            </div>
+        </div>
+        <div class="shrink-0">
+            <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit">
+                <span class="truncate">Edit</span>
+            </button>
+        </div>
+    </div>
+    <p class="text-[#1C1D22] text-base font-normal leading-normal pb-3 pt-1 px-4">
+        {{entrie.content|linebreaksbr }}
+    </p>
+
+    {% for image in entrie.images.all %}
+    <div class="flex w-full grow bg-[#F9FAFA] @container p-4">
+        <div class="w-full gap-1 overflow-hidden bg-[#F9FAFA] @[480px]:gap-2 aspect-[3/2] rounded-xl flex">
+            <div class="w-full bg-center bg-no-repeat bg-cover aspect-auto rounded-none flex-1"
+                style='background-image: url("{{image.image.url}}");'></div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    <div class="flex justify-stretch">
+        <button
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-5 bg-[#EEEFF2] text-[#1C1D22] text-base font-bold leading-normal tracking-[0.015em]">
+            <span class="truncate">See all entries</span>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
