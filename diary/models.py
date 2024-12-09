@@ -6,6 +6,15 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
 
+class CustomUser(models.Model):
+    username = models.CharField(max_length=150)
+    email = models.EmailField(unique=True)
+    password = models.TextField()
+    con_password = models.TextField()
+    
+    def __str__(self):
+        return self.username
+
 class DiaryEntry(models.Model):
     PRIVACY_CHOICES = [
         ('private', 'Private'),
@@ -35,3 +44,20 @@ class Friend(models.Model):
 
     def __str__(self):
         return f'{self.user_from} is friends with {self.user_to}'
+    
+class FriendRequest(models.Model):
+    from_user = models.ForeignKey(User, related_name='sent_requests', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(User, related_name='received_requests', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.from_user.username} -> {self.to_user.username}"
+    
+
+class BlockedUser(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blocker')
+    blocked_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blocked')
+    blocked_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} blocked {self.blocked_user.username}"

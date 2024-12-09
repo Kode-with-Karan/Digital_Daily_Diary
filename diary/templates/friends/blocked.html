@@ -1,0 +1,60 @@
+{% extends '../main/friends.html' %}
+
+{% block friends_extention %}
+<!-- <h2>Blocked Users</h2>
+<ul>
+    {% for block in blocked %}
+        <li>
+            {{ block.blocked_user.username }}
+            <form method="post" action="{% url 'unblock_user' block.blocked_user.id %}">
+                {% csrf_token %}
+                <button type="submit">Unblock</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul> -->
+
+<div id="Blocked">
+
+
+    {% for block in blocked%}
+
+    <div class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
+        <div class="flex items-center gap-4">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+                style='background-image: url("https://cdn.usegalileo.ai/sdxl10/88fbe608-8943-400e-9857-4b335060a6b5.png");'>
+            </div>
+            <div class="flex flex-col justify-center">
+                <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">{{block.blocked_user.username}}</p>
+                <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">User profile details
+                </p>
+            </div>
+        </div>
+        {{form.errors}}
+        <div class="flex items-center gap-4">
+            <form method="post" action="{% url 'unblock_user' block.blocked_user.id %}">
+                {% csrf_token %}
+                <button type="submit"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit">
+                    <span class="truncate">Unblock</span></button>
+            </form>
+            
+            <!-- <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="opt" id="opt" value="delete">
+                <input type="hidden" name="user_from" id="id_user_from" value="2">
+                <select style="display: none;" name="user_to" required="" id="id_user_to">
+                    <option type="hidden" value="{{friend.user_to.id}}" selected="{{friend.user_to.id}}">{{friend.user_to.id}}</option>
+                </select>
+                <button type="submit"
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit">
+                    <span class="truncate">Unfollow</span>
+                </button>
+            </form> -->
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

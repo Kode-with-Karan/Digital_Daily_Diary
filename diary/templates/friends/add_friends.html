@@ -1,0 +1,53 @@
+{% extends '../main/friends.html' %}
+
+{% block friends_extention %}
+<form method="get" class="flex">
+    <input class="form-input flex w-full min-w-0 flex-5 resize-none overflow-hidden rounded-xl text-[#111418] focus:outline-0 focus:ring-0 border-none bg-[#f0f2f4] focus:border-none h-14 placeholder:text-[#637588] p-4 text-base font-normal leading-normal gap-4" 
+    type="text" name="q" placeholder="Search for users">
+    <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-13 px-6 flex-1 bg-[#1980e6] text-white text-sm font-bold leading-normal tracking-[0.015em]"
+    type="submit">Search</button>
+</form>
+
+<!-- <ul>
+    {% for user in users %}
+        <li>
+            {{ user.username }}
+            <form method="post" action="{% url 'send_friend_request' user.id %}">
+                {% csrf_token %}
+                <button type="submit">Send Friend Request</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul> -->
+
+<div id="Your_Friends">
+
+
+    {% for user in users%}
+
+    <div class="flex items-center gap-4 bg-[#F9FAFA] px-4 min-h-[72px] py-2 justify-between">
+        <div class="flex items-center gap-4">
+            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-fit"
+                style='background-image: url("https://cdn.usegalileo.ai/sdxl10/88fbe608-8943-400e-9857-4b335060a6b5.png");'>
+            </div>
+            <div class="flex flex-col justify-center">
+                <p class="text-[#1C1D22] text-base font-medium leading-normal line-clamp-1">{{user.username}}</p>
+                <p class="text-[#3C3F4A] text-sm font-normal leading-normal line-clamp-2">User profile details
+                </p>
+            </div>
+        </div>
+        {{form.errors}}
+        <div class="flex items-center gap-4">
+            <form method="post" action="{% url 'send_friend_request' user.id %}">
+                {% csrf_token %}
+                <button type="submit"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-8 px-4 bg-[#EEEFF2] text-[#1C1D22] text-sm font-medium leading-normal w-fit">
+                    <span class="truncate">Send Friend Request</span></button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
